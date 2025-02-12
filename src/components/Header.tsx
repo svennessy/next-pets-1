@@ -1,6 +1,7 @@
-import { HomeIcon, File, UsersRound, LogOut } from "lucide-react"
+import { HomeIcon, File, UsersRound, LogOut, PawPrint } from "lucide-react"
 import Link from "next/link"
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components"
+
 import { Button } from "./ui/button"
 import { NavButton } from "./NavButton"
 import { ModeToggle } from "./ModeToggle"
@@ -22,6 +23,10 @@ export function Header() {
         </div>
 
         <div className="flex items-center">
+          <NavButton href="/pets" label="Pets" icon={PawPrint} />
+
+          <NavButton href="/owners" label="Owners" icon={UsersRound} />
+
           <ModeToggle />
 
           <Button
