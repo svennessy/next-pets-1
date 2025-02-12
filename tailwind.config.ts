@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "home-img": "url('/images/home-img.jpg')",
+        cherry: "url('/images/cherry.png')",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -77,6 +77,7 @@ const config: Config = {
           },
         },
       },
+      // make the navbar slide into frame on layout load
       animation: {
         appear: "appear 1s ease-in-out",
         slide: "slide 750ms ease-in-out",
