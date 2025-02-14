@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   description: "Spot",
   applicationName: "Pet Connections",
-  icons: "favicon.ico",
+  icons: "/images/favicon.ico",
 }
 
 export default function RootLayout({
@@ -33,13 +33,12 @@ export default function RootLayout({
   return (
     // hydration warning: error where component mismatches between client and server
     <html lang="en" suppressHydrationWarning>
-      <head>
+      {/* <head>
         <link rel="icon" href="/images/favicon.ico" sizes="any" />
-      </head>
+      </head> */}
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`} 
       >
-        {/* Root wrap for tailwind theme */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

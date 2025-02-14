@@ -1,5 +1,6 @@
 import { getOwner } from "@/lib/queries/getOwner"
 import { BackButton } from "@/components/BackButton"
+import OwnerForm from "./OwnerForm"
 
 export default async function ownerFormPage({
   searchParams,
@@ -22,9 +23,11 @@ export default async function ownerFormPage({
         )
       }
       console.log(owner)
+      return <OwnerForm owner={owner} />
       // put owner form component
     } else {
       // new owner form component
+      return <OwnerForm />
     }
   } catch (e) {
     if (e instanceof Error) {

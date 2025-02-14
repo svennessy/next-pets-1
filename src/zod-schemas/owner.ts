@@ -1,6 +1,8 @@
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import { owners } from "@/db/schema"
 
+// will throw type errors if drizzle-zod is updated past 0.5.1 as of 2/12
+
 export const insertOwnerSchema = createInsertSchema(owners, {
   firstName: (schema) => schema.firstName.min(1, "First name is required"),
   lastName: (schema) => schema.lastName.min(1, "Last name is required"),
