@@ -1,6 +1,7 @@
 import { getOwner } from "@/lib/queries/getOwner"
 import { getPet } from "@/lib/queries/getPet"
 import { BackButton } from "@/components/BackButton"
+import PetForm from "./PetForm"
 
 export default async function petFormPage({
   searchParams,
@@ -14,7 +15,7 @@ export default async function petFormPage({
       return (
         <>
           <h2 className="text-2xl mb-2">
-            pet ID or owner ID required to load pet form
+            Pet ID or Owner ID required to load pet form
           </h2>
           <BackButton title="Go Back" variant="default" />
         </>
@@ -28,7 +29,7 @@ export default async function petFormPage({
       if (!owner) {
         return (
           <>
-            <h2 className="text-2xl mb-2">owner ID #{ownerId} not found</h2>
+            <h2 className="text-2xl mb-2">Owner ID #{ownerId} not found</h2>
             <BackButton title="Go Back" variant="default" />
           </>
         )
@@ -38,7 +39,7 @@ export default async function petFormPage({
         return (
           <>
             <h2 className="text-2xl mb-2">
-              owner ID #{ownerId} is not active.
+              Owner ID #{ownerId} is not active.
             </h2>
             <BackButton title="Go Back" variant="default" />
           </>
@@ -47,6 +48,7 @@ export default async function petFormPage({
 
       // return pet form
       console.log(owner)
+      return <PetForm owner={owner} />
     }
 
     // Edit pet form
@@ -56,7 +58,7 @@ export default async function petFormPage({
       if (!pet) {
         return (
           <>
-            <h2 className="text-2xl mb-2">pet ID #{petId} not found</h2>
+            <h2 className="text-2xl mb-2">Pet ID #{petId} not found</h2>
             <BackButton title="Go Back" variant="default" />
           </>
         )
@@ -67,6 +69,7 @@ export default async function petFormPage({
       // return pet form
       console.log("pet: ", pet)
       console.log("owner: ", owner)
+      return <PetForm owner={owner} pet={pet} />
     }
   } catch (e) {
     if (e instanceof Error) {

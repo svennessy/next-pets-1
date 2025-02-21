@@ -23,10 +23,12 @@ export default async function ownerFormPage({
         )
       }
       console.log(owner)
-      return <OwnerForm owner={owner} />
       // put owner form component
+      // aka editing owner data
+      return <OwnerForm owner={owner} />
     } else {
       // new owner form component
+      // aka creating a new owner
       return <OwnerForm />
     }
   } catch (e) {

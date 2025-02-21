@@ -1,9 +1,14 @@
 "use client"
 
+// https://react-hook-form.com/docs/useform
 import { useForm } from "react-hook-form"
+
 import { zodResolver } from "@hookform/resolvers/zod"
+
+// shadcn
 import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
+
 import { InputWithLabel } from "@/components/inputs/InputWithLabel"
 
 import {
@@ -12,11 +17,18 @@ import {
   type selectOwnerSchemaType,
 } from "@/zod-schemas/owner"
 
+// Props is name of type we're creating
 type Props = {
+  // an owner could possibly be passed in
+  // data would come from selectOwnerSchemaType
   owner?: selectOwnerSchemaType
 }
 
+// will possibly receive owner data props
 export default function OwnerForm({ owner }: Props) {
+  // form that creates initial owner data
+  // if values exists will return it
+  // otherwise blank
   const defaultValues: insertOwnerSchemaType = {
     id: owner?.id ?? 0,
     firstName: owner?.firstName ?? "",
@@ -31,7 +43,9 @@ export default function OwnerForm({ owner }: Props) {
     notes: owner?.notes ?? "",
   }
 
+  // useForm type is <insertOwnerSchemaType>
   const form = useForm<insertOwnerSchemaType>({
+    // if there is incorrect data in field error will show upon tabbing
     mode: "onBlur",
     resolver: zodResolver(insertOwnerSchema),
     defaultValues,
@@ -45,11 +59,16 @@ export default function OwnerForm({ owner }: Props) {
     <div className="flex flex-col gap-1 sm:px-8">
       <div>
         <h2 className="text-2xl font-bold">
-          {owner?.id ? "Edit" : "New"} owner Form
+          {owner?.id ? "Edit" : "New"} Owner Form
         </h2>
       </div>
+
+      {/* Form is from shadcn, ...form is custom value utilizing rhf useForm */}
       <Form {...form}>
+        {/* Typical html form element */}
         <form
+          // form.handleSubmit is typical html
+          // submitForm is our custom async function
           onSubmit={form.handleSubmit(submitForm)}
           className="flex flex-col md:flex-row gap-4 md:gap-8"
         >
