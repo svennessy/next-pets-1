@@ -2,6 +2,18 @@ import { getOwner } from "@/lib/queries/getOwner"
 import { BackButton } from "@/components/BackButton"
 import OwnerForm from "./OwnerForm"
 
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>
+}) {
+  const { ownerId } = await searchParams
+
+  if (!ownerId) return { title: "New Owner" }
+
+  return { title: `Edit Owner #${ownerId}` }
+}
+
 export default async function ownerFormPage({
   searchParams,
 }: {

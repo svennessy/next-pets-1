@@ -9,31 +9,20 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form"
-import { Input } from "@/components/ui/input"
-import { InputHTMLAttributes } from "react"
+import { Textarea } from "../ui/textarea"
+import { TextareaHTMLAttributes } from "react"
 
 // type vs interface:
 // interface can merge multiple inputs
 // type cannot and will throw error
 
-// S is custom and stands for schema
 type Props<S> = {
   fieldTitle: string
   nameInSchema: keyof S & string
-  // ? makes value optional
   className?: string
-} & InputHTMLAttributes<HTMLInputElement>
-// after & allows you to spread in any props normally with html element
+} & TextareaHTMLAttributes<HTMLTextAreaElement>
 
-/*
-Typescript generics:
-
-function functionName<Type>(arg: Type): Type {
-    return arg;
-}
-*/
-
-export function InputWithLabel<S>({
+export function TextAreaWithLabel<S>({
   fieldTitle,
   nameInSchema,
   className,
@@ -47,14 +36,14 @@ export function InputWithLabel<S>({
       name={nameInSchema}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-base" htmlFor={nameInSchema}>
+          <FormLabel className="text-base mb-2" htmlFor={nameInSchema}>
             {fieldTitle}
           </FormLabel>
 
           <FormControl>
-            <Input
+            <Textarea
               id={nameInSchema}
-              className={`w-full max-w-xs  ${className}`}
+              className={` ${className}`}
               {...props}
               {...field}
             />
