@@ -98,7 +98,8 @@ export default function OwnerForm({ owner }: Props) {
       <DisplayServerActionResponse result={saveResult} />
       <div>
         <h2 className="text-2xl font-bold">
-          {owner?.id ? "Edit" : "New"} Owner Form
+          {owner?.id ? "Edit" : "New"} Owner{" "}
+          {owner?.id ? `#${owner.id}` : "Form"}
         </h2>
       </div>
 
