@@ -2,6 +2,7 @@ import PetSearch from "@/app/(routes)/pets/PetSearch"
 import { getMissingPets } from "@/lib/queries/getMissingPets"
 import { getPetSearchResults } from "@/lib/queries/getPetSearchResults"
 import PetTable from "./PetTable"
+import PetCard from "./PetCard"
 
 export const metadata = {
   title: "Pet Search",
@@ -24,6 +25,7 @@ export default async function Pets({
         ) : (
           <p className="mt-4">No missing pets!</p>
         )}
+        <PetCard data={results} />
       </>
     )
   }

@@ -77,8 +77,6 @@ body {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -87,3 +85,31 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@-webkit-keyframes walk {
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes walk {
+  /* appear */
+  25% {
+    opacity: 1;
+  }
+  /* disappear */
+  100% {
+    opacity: 0;
+  }
+}
+
+.pad {
+  background-color: #654321;
+  /* -webkit-border-radius: 63px 63px 63px 63px / 108px     108px 72px 72px; */
+  border-radius: 50%  50%  50%  50%  / 60%   60%         40%  40%;
+  display: block;
+  position: absolute;
+}    
